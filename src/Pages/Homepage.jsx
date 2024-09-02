@@ -3,7 +3,7 @@ import NotesCard from "../components/NotesCard";
 import { useNotes } from "../contexts/NotesContext";
 import EditNoteModal from "../components/EditNoteModal";
 const HomePage = () => {
-  const { notes, selectedNote, loading } = useNotes();
+  const { notes, loading } = useNotes();
   const [editOpen, setEditOpen] = useState(false);
 
   const sortedNotes = notes.sort((a, b) => {
@@ -37,7 +37,7 @@ const HomePage = () => {
 
   return (
     <div className="h-screen w-full relative mt-12">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 overflow-auto">
         {sortedNotes.map((note) => (
           <NotesCard key={note.id} note={note} setEditOpen={setEditOpen} />
         ))}
