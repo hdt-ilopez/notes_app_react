@@ -30,6 +30,10 @@ app.use(express.static(path.join(__dirname, "/dist")));
 app.use("/api/auth", authRoutes);
 app.use("/api/notes", checkAuthToken, notesRoutes);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
 // DATABASE CONNECTION AND SERVER START
 const PORT = process.env.PORT || 5000;
 mongoose
