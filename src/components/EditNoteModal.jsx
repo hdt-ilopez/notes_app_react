@@ -44,7 +44,7 @@ const EditNoteModal = ({ isOpen, onClose }) => {
       className="fixed inset-0 z-50 flex items-center justify-center"
     >
       <div className="fixed inset-0 bg-black opacity-30"></div>
-      <div className="bg-white rounded-lg shadow-lg w-1/2 p-6 relative z-10">
+      <div className="bg-white rounded-lg shadow-lg w-full h-screen md:h-fit md:w-2/3 p-6 relative z-10">
         <DialogTitle className="text-lg font-semibold text-gray-800">
           Edit Note
         </DialogTitle>
