@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { useNotes } from "../contexts/NotesContext";
 
 export const useManageNotes = () => {
-  const { getNotes } = useNotes();
+  const { getNotes, notes, setNotes } = useNotes();
 
   const createNote = async (note) => {
     const { noteTitle, noteContent, tags } = note;
@@ -22,10 +22,11 @@ export const useManageNotes = () => {
           error: "Note creation failed, please try again",
         }
       );
-      return true; // Return true if the note creation is successful
+      getNotes();
+      return true;
     } catch (error) {
       console.error("Error creating note", error);
-      return false; // Return false if there is an error during note creation
+      return false;
     }
   };
 
@@ -92,7 +93,11 @@ export const useManageNotes = () => {
       );
 
       if (res?.status === 200) {
-        getNotes(); // Refresh notes after successful deletion
+        if (notes?.length === 1) {
+          setNotes([]);
+        } else {
+          getNotes();
+        }
       }
     } catch (error) {
       toast.error(`Error deleting note: ${error.message}`);
