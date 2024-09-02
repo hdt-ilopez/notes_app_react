@@ -79,9 +79,7 @@ export const getNotes = async (req, res) => {
     const notes = await Note.find({ userId: userId });
 
     if (notes.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "No notes found for current user" });
+      return;
     } else {
       return res
         .status(200)
