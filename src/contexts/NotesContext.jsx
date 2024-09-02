@@ -41,7 +41,14 @@ export const NotesProvider = ({ children }) => {
 
   return (
     <NotesContext.Provider
-      value={{ notes, selectedNote, setSelectedNote, getNotes, loading }}
+      value={{
+        notes,
+        setNotes,
+        selectedNote,
+        setSelectedNote,
+        getNotes,
+        loading,
+      }}
     >
       {children}
     </NotesContext.Provider>
