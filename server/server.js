@@ -6,8 +6,10 @@ import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import path from "path";
+import checkAuthToken from "./middleware/authMiddleware.js";
 
 import authRoutes from "./routes/auth.routes.js";
+import notesRoutes from "./routes/notes.routes.js";
 
 dotenv.config();
 
@@ -26,6 +28,7 @@ app.use(express.static(path.join(__dirname, "/dist")));
 // ROUTES
 
 app.use("/api/auth", authRoutes);
+app.use("/api/notes", checkAuthToken, notesRoutes);
 
 // DATABASE CONNECTION AND SERVER START
 const PORT = process.env.PORT || 5000;

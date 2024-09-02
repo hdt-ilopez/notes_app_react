@@ -6,6 +6,7 @@ import RegisterPage from "./Pages/RegisterPage";
 import { ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "./contexts/AuthContext";
+import MainLayout from "./layout/MainLayout";
 
 const App = () => {
   const { notesUser } = useAuth();
@@ -14,23 +15,25 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={notesUser ? <HomePage /> : <Navigate to={"/login"} />}
-          />
-          <Route
-            path="/login"
-            element={!notesUser ? <LoginPage /> : <Navigate to={"/"} />}
-          />
-          <Route
-            path="/register"
-            element={!notesUser ? <RegisterPage /> : <Navigate to={"/"} />}
-          />
+          <Route element={<MainLayout />}>
+            <Route
+              path="/"
+              element={notesUser ? <HomePage /> : <Navigate to={"/login"} />}
+            />
+            <Route
+              path="/login"
+              element={!notesUser ? <LoginPage /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/register"
+              element={!notesUser ? <RegisterPage /> : <Navigate to={"/"} />}
+            />
+          </Route>
         </Routes>
       </BrowserRouter>
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
