@@ -15,7 +15,7 @@ const HomePage = () => {
     return new Date(b.updatedAt) - new Date(a.updatedAt);
   });
 
-  if (!notes) {
+  if (notes?.length === 0) {
     return (
       <div className="h-screen w-full flex flex-col items-center">
         <img src="/icons/AddNotes.svg" alt="" width={300} />
