@@ -20,15 +20,15 @@ const App = () => {
               path="/"
               element={notesUser ? <HomePage /> : <Navigate to={"/login"} />}
             />
-            <Route
-              path="/login"
-              element={!notesUser ? <LoginPage /> : <Navigate to={"/"} />}
-            />
-            <Route
-              path="/register"
-              element={!notesUser ? <RegisterPage /> : <Navigate to={"/"} />}
-            />
-          </Route>
+          </Route>{" "}
+          <Route
+            path="/login"
+            element={!notesUser ? <LoginPage /> : <Navigate to={"/"} />}
+          />
+          <Route
+            path="/register"
+            element={!notesUser ? <RegisterPage /> : <Navigate to={"/"} />}
+          />
         </Routes>
       </BrowserRouter>
       <ToastContainer
