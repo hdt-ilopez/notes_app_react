@@ -25,7 +25,6 @@ const CreateNotesModal = ({ isOpen, onClose }) => {
       setNoteContent("");
       setTags([]);
       onClose();
-      getNotes();
     }
   };
 
