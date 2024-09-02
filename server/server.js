@@ -37,10 +37,7 @@ app.get("*", (req, res) => {
 // DATABASE CONNECTION AND SERVER START
 const PORT = process.env.PORT || 5000;
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  })
+  .connect(process.env.MONGO_URL)
   .then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
